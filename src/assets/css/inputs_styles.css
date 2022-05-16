@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.placeholder-italic::placeholder {
+		font-style: italic;
+	}
+}
+
+.--transition {
+	@apply transition-all duration-300 ease-out;
+}
+
+.darkMode .menu--btn {
+	@apply text-white;
+}
+
+.cfild--input {
+	@apply bg-cyellow w-full mt-3 py-3 border-b border-cblack placeholder-cgray-900 placeholder-italic;
+}
+
+.cfild--input:focus {
+	@apply outline-none border-b-2;
+}
+
+body {
+	@apply text-cblack;
+}
+
+.container--section {
+	@apply mx-auto max-w-6xl py-16 px-3 sm:px-6;
+}
+
+.cnav--ul__li {
+	@apply no-underline bg-transparent cursor-pointer opacity-90;
+}
+
+.darkMode .cnav--ul__li {
+	@apply text-cwhite;
+}
+
+.darkMode .--light {
+	display: none !important;
+}
+
+.lightMode .--dark {
+	display: none !important;
+}
+
+.darkMode #nav--section {
+	@apply bg-cblack z-50 border border-cgray-100;
+}
+
+.lightMode #nav--section {
+	@apply bg-white z-50 border border-cgray-300;
+}
+
+.small--menu .--logo img {
+	width: 100px;
+}
+
+.cnav--ul__li:focus-within {
+	@apply opacity-100 no-underline;
+}
+.cnav--ul__li:hover {
+	@apply opacity-100 underline;
+}
+.cnav--ul {
+	@apply transition-all duration-300 ease-out pt-8 sm:pt-0 fixed z-50 top-0 left-0 flex-wrap items-center w-full h-full p-0 mt-20 space-y-5 leading-6;
+}
+
+.darkMode .cnav--ul {
+	@apply bg-cblack;
+}
+
+.lightMode .cnav--ul {
+	@apply bg-white;
+}
+
+.btn--primary,
+.btn--segondary {
+	@apply transition-all duration-300 ease-in-out rounded-md font-bold  inline-block px-6 py-3 text-sm leading-normal  no-underline align-middle cursor-pointer select-none;
+}
+
+.btn--primary__y {
+	@apply bg-cyellow text-cblack border-2 border-cyellow;
+}
+.btn--primary__y:hover {
+	@apply bg-white border-2 border-cyellow;
+}
+
+.btn--primary__b {
+	@apply text-cyellow bg-cblack;
+}
+
+.btn--primary:hover {
+	@apply underline;
+}
+
+.btn--primary:focus-within {
+	@apply border-cblack;
+}
+
+.btn--segondary__y {
+	@apply text-cyellow;
+}
+
+.btn--segondary__y:hover {
+	@apply text-white underline;
+}
+
+.ctitle--h1 {
+	@apply box-border mt-0 mb-4 text-2xl font-black;
+}
+
+.form--group {
+	@apply w-full;
+}
+
+.cbox--services {
+	@apply transition-all duration-300 ease-in-out p-8 text-center rounded-xl bg-white;
+}
+
+.cbox--services:hover {
+	@apply bg-cyellow;
+}
+
+/* ContactView */
+
+.contact--box {
+	@apply max-w-[30px]  w-full h-[60px]  flex items-center justify-start mr-6 overflow-hidden rounded;
+}
+
+.irBg {
+	position: relative;
+	@apply bg-gradient-to-l from-cblack to-cgreen;
+	z-index: 1;
+}
+
+.irBg::after {
+	background: url(stylesData/bg/logo_gray.svg) rgba(0, 32, 55, 0) bottom right no-repeat;
+	content: "";
+	height: 100%;
+	position: absolute;
+	opacity: 0.6;
+	width: 100%;
+	z-index: -1;
+}

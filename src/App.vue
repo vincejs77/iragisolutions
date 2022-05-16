@@ -1,30 +1,58 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="font-roboto font-Roboto">
+    <div :class="[$store.state.checkDarkMode ? 'darkMode' : 'lightMode', 'relative']">
+      <div
+        :class="[
+          scrollPosition < 100 ? 'normal--menu' : 'small--menu',
+          '--transition w-full',
+        ]"
+      >
+        <NavBar />
+      </div>
+    </div>
+    <main class="mt-20 sm:mt-28">
+      <router-view />
+    </main>
+
+    <FooTer />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import NavBar from "./components/NavBar.vue";
+import FooTer from "./components/FooTer.vue";
+import store from "@/store/store";
+import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 
-nav {
-  padding: 30px;
-}
+import { ref } from "vue";
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default defineComponent({
+  name: "App",
+  components: { NavBar, FooTer },
+  setup() {
+    var checkDarkMode = ref(store.state.checkDarkMode);
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+    console.log("=============", checkDarkMode.value);
+
+    var scrollPosition = ref(0);
+
+    function handleScroll(event) {
+      scrollPosition.value = window.scrollY;
+      console.log(scrollPosition.value, event);
+    }
+
+    onBeforeMount(() => {
+      window.addEventListener("scroll", handleScroll);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", handleScroll);
+    });
+    return {
+      checkDarkMode,
+      handleScroll,
+      scrollPosition,
+    };
+  },
+});
+</script>
